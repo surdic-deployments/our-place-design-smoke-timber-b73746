@@ -1,0 +1,275 @@
+@import "tailwindcss";
+
+:root {
+  --timber-950: #17110c;
+  --timber-900: #241a12;
+  --timber-800: #33251a;
+  --timber-700: #4a3524;
+  --timber-500: #7a5c3e;
+  --timber-300: #a9855e;
+
+  --linen-50: #f4ead9;
+  --linen-200: #e3d2b4;
+
+  --ember-400: #eb9a45;
+  --ember-500: #dd7f2a;
+  --ember-600: #b8641c;
+  --ember-700: #8f4d16;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --color-timber-950: var(--timber-950);
+  --color-timber-900: var(--timber-900);
+  --color-timber-800: var(--timber-800);
+  --color-timber-700: var(--timber-700);
+  --color-timber-500: var(--timber-500);
+  --color-timber-300: var(--timber-300);
+
+  --color-linen-50: var(--linen-50);
+  --color-linen-200: var(--linen-200);
+
+  --color-ember-400: var(--ember-400);
+  --color-ember-500: var(--ember-500);
+  --color-ember-600: var(--ember-600);
+  --color-ember-700: var(--ember-700);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+* {
+  border-color: var(--timber-500);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--timber-900);
+  color: var(--linen-50);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "tnum" 1;
+}
+
+::selection {
+  background: var(--ember-500);
+  color: var(--timber-950);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--timber-800);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--timber-500);
+  border: 3px solid var(--timber-800);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ember-500);
+}
+html {
+  scrollbar-color: var(--timber-500) var(--timber-800);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ember-400);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+a {
+  text-underline-offset: 0.2em;
+}
+
+.font-display {
+  font-family: var(--font-display), ui-serif, serif;
+}
+
+/* ---------------------------------------------------------------- */
+/* Wood grain: the base material every panel is cut from.            */
+/* ---------------------------------------------------------------- */
+
+.grain-wood {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  filter: url(#wood-grain);
+  mix-blend-mode: overlay;
+  opacity: 0.35;
+}
+
+/* Panel: a plank surface with a real (not flat-CSS) timber-brace frame,
+   the direction's structural device in place of a plain rounded card. */
+.panel {
+  position: relative;
+  background: var(--timber-800);
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 14px 30px -16px rgb(0 0 0 / 0.6);
+}
+
+/* Beam-line divider: a literal wood-grain beam spanning the section
+   seam, replacing a torn-paper or flat-line divider. */
+.beam-line {
+  display: block;
+  width: 100%;
+  height: 14px;
+  color: var(--timber-500);
+}
+
+/* Small tracked-out label */
+.label-caps {
+  font-family: var(--font-body), ui-sans-serif, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ember-400);
+}
+
+/* Stamped tag, e.g. dish category */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-family: var(--font-body), ui-sans-serif, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--linen-50);
+  background: var(--timber-700);
+  border: 1px solid var(--timber-500);
+  padding: 0.3em 0.7em;
+  border-radius: 3px;
+}
+
+/* Ember CTA: a warm, glowing lantern-lit button */
+.cta-ember {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-display), ui-serif, serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--timber-950);
+  background: var(--ember-500);
+  border-radius: 6px;
+  padding: 0.75em 1.7em;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.2), 0 8px 24px -8px rgb(221 127 42 / 0.55), 0 2px 6px rgb(0 0 0 / 0.4);
+  transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background 160ms var(--ease-out);
+}
+.cta-ember:hover {
+  background: var(--ember-400);
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.2), 0 12px 32px -8px rgb(221 127 42 / 0.7), 0 3px 8px rgb(0 0 0 / 0.45);
+}
+.cta-ember:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.2), 0 3px 10px -2px rgb(221 127 42 / 0.5);
+}
+
+.link-quiet {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--linen-200);
+  font-weight: 600;
+  border-bottom: 1px solid var(--timber-500);
+  padding-bottom: 0.1em;
+  transition: border-color 200ms ease, color 200ms ease;
+}
+.link-quiet:hover {
+  color: var(--ember-400);
+  border-color: var(--ember-500);
+}
+
+/* ---------------------------------------------------------------- */
+/* Scroll reveal.                                                    */
+/* ---------------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 520ms var(--ease-out), transform 520ms var(--ease-out);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 460ms var(--ease-out), transform 460ms var(--ease-out);
+}
+.stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.stagger.is-visible > *:nth-child(2) { transition-delay: 110ms; }
+.stagger.is-visible > *:nth-child(3) { transition-delay: 220ms; }
+.stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Line illustrations draw themselves on as they enter. */
+.draw-in path,
+.draw-in line,
+.draw-in polyline {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  transition: stroke-dashoffset 1500ms var(--ease-out);
+}
+.is-visible .draw-in path,
+.is-visible .draw-in line,
+.is-visible .draw-in polyline,
+.draw-in.is-visible path,
+.draw-in.is-visible line,
+.draw-in.is-visible polyline {
+  stroke-dashoffset: 0;
+}
+
+/* Smoke wisp: a slow, subtle drift on the hero illustration's smoke
+   paths only — content, not decoration, so it degrades to a settled
+   frame under reduced motion rather than disappearing outright. */
+@keyframes smoke-drift {
+  0%   { transform: translateY(0) scaleY(1); opacity: 0.85; }
+  50%  { transform: translateY(-3px) scaleY(1.03); opacity: 0.6; }
+  100% { transform: translateY(0) scaleY(1); opacity: 0.85; }
+}
+.smoke-wisp {
+  transform-origin: bottom center;
+  animation: smoke-drift 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .stagger > *,
+  .cta-ember,
+  .draw-in path,
+  .draw-in line,
+  .draw-in polyline {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
+  .reveal,
+  .stagger > * {
+    opacity: 1;
+    transform: none;
+  }
+  .draw-in path,
+  .draw-in line,
+  .draw-in polyline {
+    stroke-dashoffset: 0;
+  }
+  .smoke-wisp {
+    animation: none;
+  }
+}
